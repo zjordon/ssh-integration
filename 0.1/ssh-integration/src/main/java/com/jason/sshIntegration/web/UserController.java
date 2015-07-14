@@ -3,6 +3,9 @@
  */
 package com.jason.sshIntegration.web;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +39,8 @@ public class UserController {
 	@RequestMapping("addorupdate")
 	public String addorupdate(User user, HttpServletRequest request) {
 		if (user.getId() != null) {
-			request.setAttribute("user", userService.getUser(user.getId()));
+			user = userService.getUser(user.getId());
+			request.setAttribute("userPage", user);
 		}
 		return "/com/jason/sshIntegration/user";
 	}
@@ -44,21 +48,26 @@ public class UserController {
 	@RequestMapping("save")
 	public String save(User user, HttpServletRequest request) {
 		System.out.println("ÓÃ»§Ãû£º======" + user.getUserName());
-		if (user.getId() != null) {
+		if (user.getId() != null && !user.getId().equals("")) {
 			this.userService.updateUser(user);
 		} else {
 			userService.saveUser(user);
 		}
-		return "redirect:/userController.do?userList";
+		return "redirect:userList.do";
 	}
 
 	@RequestMapping("delUser")
-	@ResponseBody
-	public String delUser(String id, HttpServletResponse response) {
+	public void delUser(String id, HttpServletResponse response) {
 		String result = "{\"result\":\"error\"}";
 		if (userService.delUser(id)) {
 			result = "{\"result\":\"success\"}";
 		}
-		return result;
+		response.setContentType("application/json");  
+	    try {  
+	        PrintWriter out = response.getWriter();  
+	        out.write(result);  
+	    } catch (IOException e) {  
+	        e.printStackTrace();  
+	    } 
 	}
 }

@@ -1,0 +1,2 @@
+1.Controller中使用ResponseBody返回json
+2.hibernate中扫描实体所在包时的属性是annotatedClasses还是packagesToScan在？

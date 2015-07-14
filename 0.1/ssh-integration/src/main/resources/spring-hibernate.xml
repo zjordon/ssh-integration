@@ -23,7 +23,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost/ssh"></property>
+		<property name="url" value="jdbc:mysql://localhost/ssh?useUnicode=true&amp;characterEncoding=UTF-8"></property>
 		<property name="username" value="ssh"></property>
 		<property name="password" value="ssh"></property>
 	</bean>
@@ -35,15 +35,15 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
 		<!-- 注解扫描的包 -->
-		<property name="packagesToScan">
+		<property name="annotatedClasses">
 			<list>
-				<value>com.jason.sshIntegration.entity.*</value>
+				<value>com.jason.sshIntegration.entity.User</value>
 			</list>
 		</property>
 	</bean>
