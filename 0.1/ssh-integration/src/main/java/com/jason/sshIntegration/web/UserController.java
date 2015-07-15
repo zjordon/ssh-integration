@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jason.sshIntegration.entity.User;
 import com.jason.sshIntegration.service.UserService;
@@ -47,7 +46,7 @@ public class UserController {
 
 	@RequestMapping("save")
 	public String save(User user, HttpServletRequest request) {
-		System.out.println("”√ªß√˚£∫======" + user.getUserName());
+		System.out.println("Áî®Êà∑ÂêçÊòØ======" + user.getUserName());
 		if (user.getId() != null && !user.getId().equals("")) {
 			this.userService.updateUser(user);
 		} else {

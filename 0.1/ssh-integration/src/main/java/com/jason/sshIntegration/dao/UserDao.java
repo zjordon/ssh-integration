@@ -5,12 +5,9 @@ package com.jason.sshIntegration.dao;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.jason.sshIntegration.entity.User;
@@ -23,13 +20,13 @@ import com.jason.sshIntegration.entity.User;
 public class UserDao {
 
 	/**
-	 * ×¢ÈëÒ»¸ösessionFactoryÊôĞÔ
+	 * è‡ªåŠ¨æ³¨å…¥sessionFactory
 	 * **/
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	/**
-	 * ¸ù¾İÓÃ»§id²éÑ¯ÓÃ»§
+	 * æ ¹æ®ç”¨æˆ·idæŸ¥è¯¢ç”¨æˆ·
 	 */
 	public User getUser(String id) {
 
@@ -41,7 +38,7 @@ public class UserDao {
 	}
 
 	/**
-	 * ²éÑ¯ËùÓĞÓÃ»§
+	 * æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·
 	 */
 	public List<User> getAllUser() {
 
@@ -52,14 +49,14 @@ public class UserDao {
 	}
 
 	/**
-	 * Ìí¼ÓÓÃ»§
+	 * æ·»åŠ ç”¨æˆ·
 	 */
 	public void saveUser(User user) {
 		sessionFactory.getCurrentSession().save(user);
 	}
 
 	/**
-	 * ¸ù¾İÓÃ»§idÉ¾³ıÓÃ»§
+	 * æ ¹æ®idåˆ é™¤ç”¨æˆ·
 	 */
 	public boolean delUser(String id) {
 
@@ -72,7 +69,7 @@ public class UserDao {
 	}
 
 	/**
-	 * ±à¼­ÓÃ»§
+	 *ç¼–è¾‘ç”¨æˆ·
 	 */
 	public boolean updateUser(User user) {
 
