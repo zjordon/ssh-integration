@@ -14,6 +14,8 @@
 	<context:component-scan base-package="com.jason.sshIntegration.dao.*" />
 	<context:component-scan base-package="com.jason.sshIntegration.service.*" />
     -->
+    <!-- 引入属性文件 -->
+	<context:property-placeholder location="classpath:dbconfig.properties" />
 	<!-- 加载service,此时要排除要controller,因为controller已经spring-mvc中加载过了 -->
 	<context:component-scan base-package="com.jason.sshIntegration.*">
 		<context:exclude-filter type="annotation"
@@ -22,10 +24,10 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost/ssh?useUnicode=true&amp;characterEncoding=UTF-8"></property>
-		<property name="username" value="ssh"></property>
-		<property name="password" value="ssh"></property>
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
 	</bean>
 
 	<!-- 配置SessionFactory -->
@@ -34,10 +36,10 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">none</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
 			</props>
 		</property>
 		<!-- 注解扫描的包 -->
