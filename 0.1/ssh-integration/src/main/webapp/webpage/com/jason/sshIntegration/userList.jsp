@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 	function del(id) {
 		$.get("delUser.do?id=" + id, function(data) {
-			alert(data.result);
+			//alert(data.result);
 			if ("success" == data.result) {
 				alert("删除成功");
 				window.location.reload();

@@ -14,10 +14,31 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
-	
-	<!-- 开启注解 -->
-	<mvc:annotation-driven />
-	<!-- 默认的视图解析器  -->
+    <!--
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+			    <value>application/json;charset=UTF-8</value>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<context:annotation-config />
+    -->
+	<!-- 开启注解  -->
+	<mvc:annotation-driven /> 
+	<!-- 默认的视图解析器 -->
 	<bean id="defaultViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:order="3">

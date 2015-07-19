@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jason.sshIntegration.bean.Result;
 import com.jason.sshIntegration.entity.User;
 import com.jason.sshIntegration.service.UserService;
 
@@ -56,17 +58,24 @@ public class UserController {
 	}
 
 	@RequestMapping("delUser")
-	public void delUser(String id, HttpServletResponse response) {
-		String result = "{\"result\":\"error\"}";
+	@ResponseBody
+	public Result delUser(String id, HttpServletResponse response) {
+		Result result = new Result();
+		result.setResult("error");
 		if (userService.delUser(id)) {
-			result = "{\"result\":\"success\"}";
+			result.setResult("success");
 		}
-		response.setContentType("application/json");  
-	    try {  
-	        PrintWriter out = response.getWriter();  
-	        out.write(result);  
-	    } catch (IOException e) {  
-	        e.printStackTrace();  
-	    } 
+//		String result = "{\"result\":\"error\"}";
+//		if (userService.delUser(id)) {
+//			result = "{\"result\":\"success\"}";
+//		}
+		return result;
+//		response.setContentType("application/json");  
+//	    try {  
+//	        PrintWriter out = response.getWriter();  
+//	        out.write(result);  
+//	    } catch (IOException e) {  
+//	        e.printStackTrace();  
+//	    } 
 	}
 }

@@ -16,6 +16,7 @@
 	<jetty.version>6.1.25</jetty.version>
 	<!-- 辅助依赖包 -->
 	<cglib.version>2.2</cglib.version>
+	<jackson.version>1.8.4</jackson.version>
   </properties>
   <dependencies>
     <!-- spring mvc -->
@@ -117,6 +118,18 @@
 		<artifactId>mysql-connector-java</artifactId>
 		<version>${mysql.version}</version>
 		<scope>runtime</scope>
+	</dependency>
+	
+	<!-- json -->
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-core-asl</artifactId>
+		<version>${jackson.version}</version>
 	</dependency>
 	
 	<!-- 辅助依赖包 _start -->
