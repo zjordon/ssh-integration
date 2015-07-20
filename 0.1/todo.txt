@@ -1,1 +1,0 @@
-1.hibernate中扫描实体所在包时的属性是annotatedClasses还是packagesToScan在？
